@@ -46,4 +46,5 @@ A big thank you to all original contributors for creating and organizing such a 
 
 ## 📜 License
 MIT License © 2025 Eudemonia 
-See [`LICENSE`](./LICENSE) for details.
+See [`LICENSE`](./license) for details.
+
