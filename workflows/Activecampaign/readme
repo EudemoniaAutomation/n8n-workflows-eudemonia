@@ -1,0 +1,44 @@
+# Workflow: ActiveCampaign — Account Created (Admin) Trigger
+
+## 📌 What this Workflow Does
+This workflow listens for **account creation events** in **ActiveCampaign** whenever an **admin adds a new account**.  
+It turns the raw account creation into an **automation entry point**, enabling instant reactions in your business systems.
+
+---
+
+## 🧩 About ActiveCampaign
+**ActiveCampaign** is a popular platform for **email marketing, marketing automation, and CRM**.  
+It’s widely used by small and medium-sized businesses to manage customer relationships, run campaigns, and build automated customer journeys.  
+
+- 🌐 Focus: Customer Experience Automation (CXA)  
+- 🔑 Features: Email campaigns, CRM, lead scoring, advanced automations  
+- 🎯 Typical users: Marketing teams, sales teams, online businesses  
+
+This workflow leverages ActiveCampaign’s event system to **react instantly when new customer accounts are created** — making it a natural trigger for downstream business processes.
+
+---
+
+## 🔄 Example Use Cases
+- **Onboarding Sequences**  
+  Launch a multi-step onboarding process across tools (send welcome email, create a Slack channel, generate a Notion page).  
+
+- **Team Notifications**  
+  Post into a sales or support channel whenever a new customer account is registered, so your team stays aligned.  
+
+- **CRM / ERP Synchronization**  
+  Automatically push the new account details into your CRM (Salesforce, HubSpot, Zoho) or ERP system.  
+
+- **Data Logging & Analytics**  
+  Store account metadata into Google Sheets, Airtable, or a database to track growth and create reports.  
+
+- **Compliance & Governance**  
+  Log account creation in an audit trail, or trigger workflows to validate that the account meets policy requirements.  
+
+---
+
+## 💡 Why it Matters
+Account creation is often the **starting point for a customer journey**.  
+With this trigger, you can automate the “Day 0” tasks that otherwise slow down your team:  
+- No missed onboarding steps  
+- No manual CRM updates  
+- No delayed team communication  
