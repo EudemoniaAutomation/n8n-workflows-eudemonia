@@ -1,0 +1,58 @@
+Workflow: Bitwarden — Gruppe erstellen & Mitglieder zuweisen (Auto-Provisioning)
+
+📌 Was dieser Workflow macht
+
+Dieser n8n-Workflow erstellt in Bitwarden automatisch eine neue Gruppe (Name: documentation), holt alle Benutzer ab und ordnet sie der Gruppe zu.
+Zum Schluss liest er die Mitglieder der Gruppe wieder aus, um die erfolgreiche Zuweisung zu verifizieren – ideal als automatischer Einstiegspunkt für Zugriffs- und Berechtigungsprozesse.
+
+⸻
+
+🧩 Über Bitwarden
+
+Bitwarden ist ein Open-Source-Passwortmanager für Teams & Unternehmen mit Self-Hosting-Option, Organisations-Vaults, Gruppen & Zugriffsrichtlinien.
+	•	🔐 Fokus: Sichere Geheimnis- und Zugangsdatenverwaltung
+	•	👥 Features: Organisations-Vaults, Gruppen, Benutzer-/Rollenverwaltung, Richtlinien
+	•	🏢 Typische Nutzer: IT, DevOps, Security- & Compliance-Teams
+
+Dieser Workflow nutzt die Bitwarden-API, um Gruppen- und Mitgliederverwaltung zu automatisieren – ein natürlicher Trigger für nachgelagerte Prozesse wie Onboarding, Zugriffsreviews oder Audit-Protokolle.
+
+⸻
+
+🔄 Beispiel-Use-Cases
+	•	Team-Onboarding
+Neue Mitarbeitende automatisch in Standard-Gruppen (z. B. Doku/Support) aufnehmen und passende Vault-Collections freigeben.
+	•	Rollenwechsel & Re-Provisioning
+Bei Abteilungswechsel die Gruppenmitgliedschaften neu setzen, damit nur die relevanten Secrets sichtbar bleiben.
+	•	Audit & Compliance
+Gruppenmitgliedschaften regelmäßig neu aufbauen und verifizieren, Ergebnisse protokollieren (z. B. in Google Sheets/DB).
+	•	Blueprint für weitere Gruppen
+Den Flow für mehrere Standard-Gruppen duplizieren (Engineering, Finance, Support) und zentral ausrollen.
+
+⸻
+
+💡 Warum das wichtig ist
+
+Zugriffsrechte sind das Herzstück von Least-Privilege. Automatisierte Gruppenverwaltung sorgt für:
+	•	Keine vergessenen Berechtigungen beim Onboarding
+	•	Konsistente, wiederholbare Provisionierung ohne manuelle Fehler
+	•	Nachvollziehbarkeit und schnelle Compliance-Nachweise
+
+⸻
+
+🧠 Wie der Workflow funktioniert (Node-für-Node)
+	1.	Bitwarden (Group → create)
+Erstellt eine neue Gruppe mit dem Namen documentation und gibt die id der Gruppe zurück.
+	2.	Bitwarden1 (Member → getAll)
+Ruft alle Mitglieder der Organisation ab (returnAll: true). Jeder Datensatz enthält u. a. die id des Members.
+	3.	Bitwarden2 (Group → updateMembers)
+Nimmt die Gruppen-ID aus Node 1 und die Member-IDs aus Node 2 ({{$json["id"]}}).
+Ergebnis: Alle gelisteten Benutzer werden der Gruppe documentation zugeordnet.
+	4.	Bitwarden3 (Group → getMembers)
+Liest die aktuellen Gruppenmitglieder erneut aus – dient als Verifikation/Output für Logs oder Benachrichtigungen.
+
+⸻
+
+✅ Voraussetzungen
+	•	Bitwarden API Credentials in n8n hinterlegt (Organisationsebene, ausreichende Rechte für Gruppen & Mitglieder).
+	•	Ziel-Organisation in Bitwarden vorhanden.
+	•	n8n-Instanz mit Internet-/API-Zugriff auf Bitwarden (Cloud oder Self-Hosted).
